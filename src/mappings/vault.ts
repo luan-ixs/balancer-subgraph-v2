@@ -171,7 +171,7 @@ function handlePoolJoined(event: PoolBalanceChanged): void {
   let joinId = transactionHash.toHexString().concat(logIndex.toString());
   let join = new JoinExit(joinId);
   join.sender = event.params.liquidityProvider;
-  let joinAmounts = new Array<BigDecimal>(amounts.length);
+  let joinAmounts = new Array<BigDecimal>(amounts.length).fill(BigDecimal.fromString('0'));
   let valueUSD = ZERO_BD;
   for (let i: i32 = 0; i < tokenAddresses.length; i++) {
     let tokenAddress: Address = Address.fromString(tokenAddresses[i].toHexString());
@@ -311,7 +311,7 @@ function handlePoolExited(event: PoolBalanceChanged): void {
   let exitId = transactionHash.toHexString().concat(logIndex.toString());
   let exit = new JoinExit(exitId);
   exit.sender = event.params.liquidityProvider;
-  let exitAmounts = new Array<BigDecimal>(amounts.length);
+  let exitAmounts = new Array<BigDecimal>(amounts.length).fill(BigDecimal.fromString('0'));
   let valueUSD = ZERO_BD;
   for (let i: i32 = 0; i < tokenAddresses.length; i++) {
     let tokenAddress: Address = Address.fromString(tokenAddresses[i].toHexString());
